@@ -1,11 +1,19 @@
+require "colorize"
+
+
+class Git
+  def initialize
+    menu 
+  end 
 def menu
+  puts "-- Main Menu --"
   puts "1) Enter git command"
-  puts "2) Exit"
+  puts "2) Exit".colorize(:cyan)
   put "> "
   choice = gets.to_i
   case choice
   when 1
-    puts "Enter git command:"
+    puts "Enter git command:".colorize(:green)
     print ">"
     puts_git(gets.strip)
     menu
@@ -13,17 +21,14 @@ def menu
     exit 
 
   else 
-    puts "Invalid Input"
+    puts "Invalid Input".colorize(:red)
     sleep(2)
     print `clear`
     menu
 end
 end 
 
-class git
-def initialize
-  menu 
-end
+
  
 def puts_git(cmd)
   puts `git #{cmd} -h`
